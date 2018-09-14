@@ -1,5 +1,6 @@
 import dice as d
 import random as r
+import tkinter as tk
 import colorama
 from termcolor import colored, cprint
 from gm import *
@@ -7,6 +8,8 @@ from generative import *
 from une import UNE
 from magic import Magic
 from prophecy import Prophecy
+from genesysUI import GenesysUI
+from tkinter import ttk
 from os import system
 import sys
 
@@ -99,7 +102,7 @@ def commands():
 
     ''')
 
-system("title "+"Fiere RPG Companion v0.1 by Mikhail Joseph T. Agudo")
+system("title "+"Fiere RPG Companion v0.11 by Mikhail Joseph T. Agudo")
 
 print('---------------------------------------')
 print(colored('WELCOME TO FIERE', 'yellow'))
@@ -224,6 +227,14 @@ while quit == 0:
                 print('It is also possible to type "npc mood <1-7>" or simply "npc mood" for a random disposition')
         else:
             print(une.generate())
+    elif(player_input[0] == "genesys"):
+        try:
+            root = tk.Tk()
+            root.title('Genesys Dice Roller')
+            GenesysUI(root).pack(side="top", fill="both", expand=True)
+            root.mainloop()
+        except:
+            print(error())
     elif(player_input[0] == "event"):
         try:
             event, event_desc, meaning = game_master.generate()
