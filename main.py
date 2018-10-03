@@ -102,7 +102,7 @@ def commands():
 
     ''')
 
-system("title "+"Fiere RPG Companion v0.11 by Mikhail Joseph T. Agudo")
+system("title "+"Fiere RPG Companion v0.12 by Mikhail Joseph T. Agudo")
 
 print('---------------------------------------')
 print(colored('WELCOME TO FIERE', 'yellow'))
@@ -228,13 +228,13 @@ while quit == 0:
         else:
             print(une.generate())
     elif(player_input[0] == "genesys"):
-        try:
-            root = tk.Tk()
-            root.title('Genesys Dice Roller')
-            GenesysUI(root).pack(side="top", fill="both", expand=True)
-            root.mainloop()
-        except:
-            print(error())
+        #try:
+        root = tk.Tk()
+        root.title('Genesys Dice Roller')
+        GenesysUI(root).pack(side="top", fill="both", expand=True)
+        root.mainloop()
+        #except:
+            #print(error())
     elif(player_input[0] == "event"):
         try:
             event, event_desc, meaning = game_master.generate()
