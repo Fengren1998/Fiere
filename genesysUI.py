@@ -85,23 +85,23 @@ class GenesysUI(tk.Frame):
         self.despair_image = tk.Label(self, image=self.despair_file).grid(column=1, row=6)
 
         # Bind the buttons to keys
-        self.parent.bind('q', self.bdice_add)
-        self.parent.bind('a', self.bdice_dec)
+        self.parent.bind('x', self.bdice_add)
+        self.parent.bind('z', self.bdice_dec)
 
-        self.parent.bind('w', self.sdice_add)
-        self.parent.bind('s', self.sdice_dec)
+        self.parent.bind('v', self.sdice_add)
+        self.parent.bind('c', self.sdice_dec)
 
-        self.parent.bind('e', self.adice_add)
-        self.parent.bind('d', self.adice_dec)
+        self.parent.bind('s', self.adice_add)
+        self.parent.bind('a', self.adice_dec)
 
-        self.parent.bind('r', self.ddice_add)
-        self.parent.bind('f', self.ddice_dec)
+        self.parent.bind('f', self.ddice_add)
+        self.parent.bind('d', self.ddice_dec)
 
-        self.parent.bind('x', self.pdice_add)
-        self.parent.bind('z', self.pdice_dec)
+        self.parent.bind('w', self.pdice_add)
+        self.parent.bind('q', self.pdice_dec)
 
-        self.parent.bind('v', self.cdice_add)
-        self.parent.bind('c', self.cdice_dec)
+        self.parent.bind('r', self.cdice_add)
+        self.parent.bind('e', self.cdice_dec)
 
         self.parent.bind('<BackSpace>', self.reset_pool)
         self.parent.bind('<space>', self.roll)
