@@ -171,9 +171,14 @@ class Mythic():
             self.subject.append(product)
 
     def calculate(self, rank, chaos=None):
-        roll1 = r.randint(1,10)
-        roll2 = r.randint(1,10)
+        roll1 = self.rollsim(1, 10)
+        roll2 = self.rollsim(1, 10)
         total = roll1 + roll2
+
+        # For exceptional results
+        roll1 = self.rollsim(1, 10)
+        roll2 = self.rollsim(1, 10)
+        total2 = roll1 + roll2
 
         # For Chaos
         isChaos = False
@@ -205,7 +210,7 @@ class Mythic():
             isChaos = True
 
         # For exceptionals and events
-        digits = str(total)
+        digits = str(total2)
         if(len(digits) > 1):
             digit1 = int(digits[0])
             digit2 = int(digits[1])
@@ -233,8 +238,8 @@ class Mythic():
             return 'Yes.'
 
     def detail(self, chaos=None):
-        roll = r.randint(2,20)
-
+        roll = self.rollsim(2, 20)
+        print(roll) #testing purposes
         # Handle the chaos argument
         if(chaos is not None):
             if(chaos == '+'):
@@ -314,8 +319,12 @@ class Mythic():
 
         return event, event_desc, meaning
 
-    def rolemaster(self, input):
-        placeholder = 1
+    def rollsim(self, lower, upper):
+        roll = 0
+        for x in range(lower + upper):
+            roll = r.randint(lower, upper)
+
+        return roll
 
 class Dungeon():
     def __init__(self):

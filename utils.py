@@ -1,5 +1,15 @@
 import random as r
 
+def roll(lower, upper):
+    roll = 0
+    for x in range(lower + upper):
+        roll = r.randint(lower, upper)
+
+    return roll
+
+def colored_text(text, color):
+    placeholder
+
 def GM_Cell():
     placeholder
 

@@ -1,25 +1,10 @@
-'''
-import random as r
-import nltk
-from nltk.parse.generate import generate, demo_grammar
-from nltk import CFG
-
-class Adventure():
-    def __init__(self):
-        with open('data/idea.ni', 'r') as file:
-            content = file.read().rstrip('\r\n')
-        tokens = nltk.word_tokenize(content)
-        text = nltk.Text(tokens)
-        print(tokens)
-        self.grammar = CFG.fromstring(text)
-        self.ideas = list(generate(self.grammar, depth=20))
-
-    def generate(self):
-        return self.ideas[r.randint(0, len(self.ideas) - 1)]
-'''
 import nltk
 import numpy
 import random as r
+
+class ProphecyNew:
+    def __init__(self):
+        placeholder = 0
 
 class Prophecy():
     def __init__(self):
