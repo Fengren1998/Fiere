@@ -12,14 +12,14 @@ PYTHON_INSTALL_DIR = os.path.dirname(os.path.dirname(os.__file__))
 os.environ['TCL_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', 'tcl8.6')
 os.environ['TK_LIBRARY'] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', 'tk8.6')
 
-packages = ['numpy', 'numpy.core._methods', 'numpy.lib.format', 'tkinter']
+packages = ['tkinter']
 excludes = ['IPython', 'OpenGL', 'asyncio', 'curses',
     'ipykernel', 'ipython_genutils',
     'jedi', 'jinja2', 'jsonschema', 'jupyter_client', 'jupyter_core',
     'lib2to3', 'markupsafe', 'matplotlib', 'notebook', 'pydoc_data', 'pyreadline',
     'pygame', 'pygments', 'pytz', 'requests', 'setuptools', 'testpath'
-    'tkinter', 'tornado', 'traitlets', 'wcwidth', 'lxml', 'unittest'
-    'distutils', 'multiprocessing', 'nose']
+    'tornado', 'traitlets', 'wcwidth', 'lxml', 'unittest'
+    'distutils', 'multiprocessing', 'nose', 'numpy', 'numpy.core._methods', 'numpy.lib.format']
 
 options = {
     'build_exe': {

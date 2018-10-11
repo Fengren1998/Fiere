@@ -3,6 +3,8 @@ An RPG Companion for all game masters and solo players.
 
 As of version 0.12b, there is no UI.
 
+As of version 0.12c, the prophecy system has been temporarily retracted. The code is still there of course.
+
 To-do List (self-reminder):
 1. Full UI
 2. Card Organizer, where a user may create cards then classify them into custom genres. It'll also be possible to randomly draw a card. Needs a full UI.

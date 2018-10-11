@@ -7,9 +7,10 @@ from gm import *
 from generative import *
 from une import UNE
 from magic import Magic
-from prophecy import Prophecy
+#from prophecy import Prophecy
 from genesysUI import GenesysUI
 from tkinter import ttk
+from playingcards import Dealer
 from os import system
 import sys
 
@@ -102,7 +103,7 @@ def commands():
 
     ''')
 
-system("title "+"Fiere RPG Companion v0.12b by Mikhail Joseph T. Agudo")
+system("title "+"Fiere RPG Companion v0.12c by Mikhail Joseph T. Agudo")
 
 print('---------------------------------------')
 print(colored('WELCOME TO FIERE', 'yellow'))
@@ -122,11 +123,12 @@ Vincent Jarvina for bringing up prophecies
 
 game_master = Mythic()
 une = UNE()
-prophecy = Prophecy()
+#prophecy = Prophecy()
 dungeon_gen = Dungeon()
 settle_gen = Settlement()
 oracle = Oracle()
 magic_sys = Magic()
+dealer = Dealer()
 
 quit = 0
 while quit == 0:
@@ -197,15 +199,18 @@ while quit == 0:
                 print(game_master.strength_determine())
             except:
                 print(error())
-    elif(player_input[0] == "prophecy"):
-        if(len(player_input) > 1):
-            if(player_input[1] == 'bigrams'):
-                print(prophecy.test())
-        else:
-            try:
-                print(prophecy.generate())
-            except:
-                print(error())
+    #elif(player_input[0] == "prophecy"):
+    #    if(len(player_input) > 1):
+    #        if(player_input[1] == 'bigrams'):
+    #            print(prophecy.test())
+    #    else:
+    #        try:
+    #            print(prophecy.generate())
+    #        except:
+    #            print(error())
+    elif(player_input[0] == "deal"):
+        dealer.shuffle_deck()
+        print(dealer.deal_deck(1))
     elif(player_input[0] == "npc"):
         if(len(player_input) > 1):
             try:
