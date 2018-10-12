@@ -251,7 +251,7 @@ class GenesysUI(tk.Frame):
         if(self.Genesys.despair > 0):
             self.despair_result.set(self.Genesys.despair)
         if(self.Genesys.net_success > 0):
-            self.success_result.set(self.Genesys.success)
+            self.success_result.set(self.Genesys.net_success)
         elif(self.Genesys.net_success < 0):
             self.failure_result.set(-self.Genesys.net_success)
         if(self.Genesys.net_advantage > 0):

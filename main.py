@@ -103,7 +103,7 @@ def commands():
 
     ''')
 
-system("title "+"Fiere RPG Companion v0.12c by Mikhail Joseph T. Agudo")
+system("title "+"Fiere RPG Companion v0.12d by Mikhail Joseph T. Agudo")
 
 print('---------------------------------------')
 print(colored('WELCOME TO FIERE', 'yellow'))
