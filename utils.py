@@ -1,4 +1,5 @@
 import random as r
+from termcolor import colored, cprint
 
 def roll(lower, upper):
     roll = 0

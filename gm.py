@@ -239,7 +239,6 @@ class Mythic():
 
     def detail(self, chaos=None):
         roll = self.rollsim(2, 20)
-        print(roll) #testing purposes
         # Handle the chaos argument
         if(chaos is not None):
             if(chaos == '+'):

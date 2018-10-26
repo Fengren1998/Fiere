@@ -31,10 +31,13 @@ def help():
     print('Typing {} will roll 4 20-sided dice and select the 3 lowest.'.format(colored('"4d20v3"', 'cyan')))
     print('{} will roll a 100-sided dice and select the one lowest dice.'.format(colored('"2d100v1"', 'cyan')))
     print('')
+    print(colored('CARD DRAWING', 'yellow'))
+    print('Type {} to draw a random card from a standard 52-card deck.'.format(colored('"deal"', 'cyan')))
+    print('')
     print(colored('GM EMULATION', 'yellow'))
     print('Type {}.'.format(colored('"fate <numbers 1-9>"', 'cyan')))
     print('The number means the likelihood an event will happen.')
-    print('You may add a {} or {} sign after the number, to indicate whether the situation is in favor of the subject or not.'.format(colored('"+"', 'cyan'), colored('""', 'cyan'),))
+    print('You may add a {} or {} sign after the number, to indicate whether the situation is in favor of the subject or not.'.format(colored('"+"', 'cyan'), colored('"-"', 'cyan'),))
     print('')
     print(colored('GM EMULATION: DETAILS', 'yellow'))
     print('Type {} to generate a detail.'.format(colored('"detail"', 'cyan')))
@@ -80,21 +83,34 @@ def help():
     print('Generates a plot twist, applicable to almost any quest or adventure.')
     print('')
     print(colored('GOAL GENERATION', 'yellow'))
-    print('Type {} to generate a plot twist.'.format(colored('"goal"', 'cyan')))
+    print('Type {} to generate a goal.'.format(colored('"goal"', 'cyan')))
     print('Generates a goal. May be reinterpreted into a quest or adventure, or into an objective/thread.')
     print('')
     print(colored('PROPHECY SYSTEM', 'yellow'))
     print('Type {} to receive a prophecy.'.format(colored('"prophecy"', 'cyan')))
     print('You must use your imagination to interpret it in any way you wish.')
     print('NOTE: In truth, this is a quest generator in broken English, I am improving the AI for this.')
+    print('NOTE: The Prophecy System is temporarily removed. It will be overhauled in December 2018.')
     print('')
     print(colored('DUNGEON GENERATION', 'yellow'))
-    print('Type {} to generate a dungeon.'.format(colored('"twist"', 'cyan')))
+    print('Type {} to generate a dungeon.'.format(colored('"dungeon"', 'cyan')))
     print('Generates a description of a dungeon.')
     print('')
     print(colored('SETTLEMENT GENERATION', 'yellow'))
-    print('Type {} to generate a settlement. (village/town/city)'.format(colored('"twist"', 'cyan')))
+    print('Type {} to generate a settlement. (village/town/city)'.format(colored('"settlement"', 'cyan')))
     print('Generates a settlement.')
+    print('')
+    print(colored('GENESYS DICE ROLLER', 'yellow'))
+    print('Type {} to open a new window for rolling Genesys dice.'.format(colored('"genesys"', 'cyan')))
+    print('{} will increase and decrease Proficiency Dice.'.format(colored('Q and W', 'cyan')))
+    print('{} will increase and decrease Ability Dice.'.format(colored('A and S', 'cyan')))
+    print('{} will increase and decrease Boost Dice.'.format(colored('Z and X', 'cyan')))
+    print('{} will increase and decrease Setback Dice.'.format(colored('E and R', 'cyan')))
+    print('{} will increase and decrease Difficulty Dice.'.format(colored('D and F', 'cyan')))
+    print('{} will increase and decrease Challenge Dice.'.format(colored('C and V', 'cyan')))
+    print('{} will reset the dice pool to 0.'.format(colored('Backspace', 'cyan')))
+    print('{} will roll the dice pool.'.format(colored('Spacebar', 'cyan')))
+    print('There will be a bar that signifies whether you\'ve rolled or not, because some results tend to be the same.')
     print('')
 
 def commands():
@@ -103,21 +119,22 @@ def commands():
 
     ''')
 
-system("title "+"Fiere RPG Companion v0.12d by Mikhail Joseph T. Agudo")
+system("title "+"Fiere RPG Companion v0.12e by Mikhail Joseph T. Agudo")
 
 print('---------------------------------------')
 print(colored('WELCOME TO FIERE', 'yellow'))
 print('Fiere is an RPG Companion.')
 print('')
 print('Type {} to see a guide on the usage of commands.'.format(colored('"help"', 'cyan')))
-print('Many of the functions require imagination and/or interpretation on your part.')
+print('Many of the functions may require imagination and/or interpretation on your part.')
 print('')
 print(colored('SPECIAL THANKS TO:', 'yellow'))
 
-print('''Mythic GM Emulator by Tom Pigeon
+print('''Mythic GM Emulator by Tom/Tana Pigeon
 The Universal NPC Emulator by Zach Best
 Ironsworn by Shawn Tomkin
-NLTK Sentences: https://www.hallada.net/2017/07/11/generating-random-poems-with-python.html
+Genesys by Fantasy Flight Games
+Dungeons and Dragons 5th Edition DM's Guide by Wizards of the Coast
 Vincent Jarvina for bringing up prophecies
 ''')
 
