@@ -1,4 +1,5 @@
 import random as r
+from utils import rollsim
 from termcolor import colored, cprint
 
 with open('data/settlement_names.ni', 'r') as file:
@@ -171,13 +172,13 @@ class Mythic():
             self.subject.append(product)
 
     def calculate(self, rank, chaos=None):
-        roll1 = self.rollsim(1, 10)
-        roll2 = self.rollsim(1, 10)
+        roll1 = rollsim(1, 10)
+        roll2 = rollsim(1, 10)
         total = roll1 + roll2
 
         # For exceptional results
-        roll1 = self.rollsim(1, 10)
-        roll2 = self.rollsim(1, 10)
+        roll1 = rollsim(1, 10)
+        roll2 = rollsim(1, 10)
         total2 = roll1 + roll2
 
         # For Chaos
@@ -238,7 +239,7 @@ class Mythic():
             return 'Yes.'
 
     def detail(self, chaos=None):
-        roll = self.rollsim(2, 20)
+        roll = rollsim(2, 20)
         # Handle the chaos argument
         if(chaos is not None):
             if(chaos == '+'):
@@ -256,20 +257,20 @@ class Mythic():
 
     def action_gen(self):
         result = ''
-        result += self.action_1[r.randint(0, len(self.action_1) - 1)]
+        result += self.action_1[rollsim(0, len(self.action_1) - 1)]
         result += ' '
-        result += self.action_2[r.randint(0, len(self.action_2) - 1)]
+        result += self.action_2[rollsim(0, len(self.action_2) - 1)]
         return result
 
     def description_gen(self):
         result = ''
-        result += self.description_1[r.randint(0, len(self.description_1) - 1)]
+        result += self.description_1[rollsim(0, len(self.description_1) - 1)]
         result += ' '
-        result += self.description_2[r.randint(0, len(self.description_2) - 1)]
+        result += self.description_2[rollsim(0, len(self.description_2) - 1)]
         return result
 
     def strength_determine(self, modifier=None, modifier2=None):
-        roll = r.randint(2,20)
+        roll = rollsim(2,20)
 
         # Handle the modifier argument
         if(modifier is not None):
@@ -303,7 +304,7 @@ class Mythic():
     def generate(self):
         event = ''
         event_desc = ''
-        roll = r.randint(1,100)
+        roll = rollsim(1,100)
         for i in self.events_table:
             if(roll <= i.upper):
                 event = i.name
@@ -311,19 +312,12 @@ class Mythic():
                 break
 
         meaning = ''
-        roll = r.randint(1, 100)
+        roll = rollsim(1, 100)
         meaning += self.action[roll - 1] + ' '
-        roll = r.randint(1, 100)
+        roll = rollsim(1, 100)
         meaning += self.subject[roll - 1]
 
         return event, event_desc, meaning
-
-    def rollsim(self, lower, upper):
-        roll = 0
-        for x in range(lower + upper):
-            roll = r.randint(lower, upper)
-
-        return roll
 
 class Dungeon():
     def __init__(self):
@@ -361,7 +355,7 @@ class Dungeon():
         ]
 
     def exotic(self):
-        roll = r.randint(0, len(self.dungeon_exotic) - 1)
+        roll = rollsim(0, len(self.dungeon_exotic) - 1)
         result = self.dungeon_exotic[roll]
         return result
 
@@ -369,13 +363,13 @@ class Dungeon():
         location = ''
         purpose = ''
 
-        roll = r.randint(1,100)
+        roll = rollsim(1,100)
         for i in self.dungeon_location:
             if(roll <= i.upper):
                 location = i.description
                 break
 
-        roll = r.randint(1,20)
+        roll = rollsim(1,20)
         for i in self.dungeon_purpose:
             if(roll <= i.upper):
                 purpose = i.description
@@ -411,7 +405,7 @@ class Settlement():
 
     def generate(self):
         name = MName().New()
-        ruler_status = self.ruler_status[r.randint(0, len(self.ruler_status) - 1)]
+        ruler_status = self.ruler_status[rollsim(0, len(self.ruler_status) - 1)]
         temp = ruler_status
         first = list(temp.lower())
 
@@ -422,9 +416,9 @@ class Settlement():
 
         result = 'The village/town/city named {4} is governed by {5} {0}, known for its {1} and {2}. It is in a state of calamity due to {3}.'.format(
             colored(ruler_status, 'cyan'),
-            colored(self.traits[r.randint(0, len(self.traits) - 1)], 'green'),
-            colored(self.known_for[r.randint(0, len(self.known_for) - 1)], 'green'),
-            colored(self.calamity[r.randint(0, len(self.calamity) - 1)], 'yellow'),
+            colored(self.traits[rollsim(0, len(self.traits) - 1)], 'green'),
+            colored(self.known_for[rollsim(0, len(self.known_for) - 1)], 'green'),
+            colored(self.calamity[rollsim(0, len(self.calamity) - 1)], 'yellow'),
             colored(name, 'magenta'),
             start
         )
@@ -499,9 +493,50 @@ class Oracle():
             TOADCell(95,'Resolve a dispute.'),
             TOADCell(100,'Roll two more times.'),
         ]
+        self.factions = [
+            Cell(4, colored('Alliance', 'cyan'), 'A faction comprised of several very different groups (for example, dwarves, assassins and botanists), banded together either for mutual survival or some esoteric mission of mutual interest'),
+            Cell(8, colored('Cabal', 'cyan'), 'A faction which is plotting something nefarious and not widely known.'),
+            Cell(12, colored('Camarilla', 'cyan'), 'A faction which serves the ruler, but in a very secret or unofficial capacity which will never be openly recognized; for example, a group of assassins serving the government.'),
+            Cell(16, colored('Circle', 'cyan'), 'A group of entities who are evenly matched in power, at the very least in voting power and influence.'),
+            Cell(20, colored('Consortium', 'cyan'), 'A faction which has a very strong interest in wealth acquisition.'),
+            Cell(24, colored('Coven', 'cyan'), 'A faction comprised solely of arcane spell casters.'),
+            Cell(28, colored('Cryptic Alliance', 'cyan'), 'A faction with a very ancient purpose, which has existed for thousands of years. Will have access to a knowledge source which provides the underlying basis for the belief.'),
+            Cell(36, colored('Cult', 'cyan'), 'A religious sect — chiefly containing clerics and their servitors — which serves a deity or entity that is not widely recognized in the realm(s). May be apocalyptic. Examples include the Cult of Cthulhu, the Brotherhood of the King in Yellow, the Sisters of Shub-Niggurath, and so forth.'),
+            Cell(40, colored('Fellowship', 'cyan'), 'A group of widely different friends, who have longstanding personal relationships with one another. Only friends of friends will be admitted to this faction.'),
+            Cell(44, colored('Fraternity or Brotherhood', 'cyan'), 'A faction with exclusively male members.'),
+            Cell(48, colored('Gang', 'cyan'), 'A faction that is mostly young, and mostly urban-based. Organization level may be unexpectedly high if there is a mastermind of some kind leading the group from a secret hideout.'),
+            Cell(52, colored('Gathering', 'cyan'), 'A temporary faction, which may soon fall apart, accept new members, change its goal or mission, or turn into something much more.'),
+            Cell(56, colored('Guild', 'cyan'), 'A highly organized urban faction, which already enjoys considerable power and influence. The faction is non-violent within urban locales whenever possible.'),
+            Cell(60, colored('Independent Enclave', 'cyan'), 'A demi-human community (dwarves, elves, gnomes, halflings, etc., or a pairing of two races) which serves a goal or mission more than they serve the interests of their outside racial brethren.'),
+            Cell(64, colored('Isolated Settlement', 'cyan'), 'A thorp or village in the middle of nowhere, completely dedicated to the faction and its ends. Wanderers may set out from the hideout on missions, or to influence powers in urban areas.'),
+            Cell(68, colored('Knightly Order', 'cyan'), 'An organized group of cavaliers, and possibly with either paladins or anti-paladins as well. There will likely be some form of companion armsmen to aid the main group of members.'),
+            Cell(72, colored('League', 'cyan'), 'A large faction with numerous bases or edifices in far-flung settlements throughout the realm.'),
+            Cell(76, colored('Mercenary Company', 'cyan'), 'A wandering group of adventurers, taking on missions for wealth and glory.'),
+            Cell(80, colored('Monastery or Nunnery', 'cyan'), 'A faction which features a majority of priests and monks, working for either a religious or philosophical end.'),
+            Cell(84, colored('Secret Society', 'cyan'), 'A very secret faction, with limited membership, a hideout, passwords, members in disguise, reconnaissance, and so forth.'),
+            Cell(88, colored('Sect', 'cyan'), 'A faction that practices a particular field be it martial arts, magic, philosophy, alchemy etc. Generally based in a location either in a cave, a huge complex, a campus-like setting or clan houses.'),
+            Cell(92, colored('Society', 'cyan'), 'An urban faction which is highly social, and although its goal is important, it is chiefly obsessed with fashion, relationships, appearances, and a very comfortable base of operations.'),
+            Cell(96, colored('Sorority or Sisterhood', 'cyan'), 'A faction with exclusively female members.'),
+            Cell(100, colored('Splinter Group', 'cyan'), 'A faction which has separated itself from a larger faction, due to a fundamental disagreement.')
+        ]
+        self.government = [
+            Cell(2, colored('Anarchy or Ochlocracy', 'cyan'), 'There is no government. The evil elements of the former society take advantage and begin preying on the weak.'),
+            Cell(4, colored('Aristocracy', 'cyan'), 'A government which places power in the hands of a privileged ruling class.'),
+            Cell(6, colored('Autocracy', 'cyan'), 'A system of government in which all supreme power is concentrated on one person. Whoever the ruler is, he’s almost certainly the strongest entity in the area, whether politically or individually.'),
+            Cell(7, colored('Benevolent Dictatorship', 'cyan'), 'A government ruled by one powerful person, but he does so for the good of the people, perhaps even against their will. Resistance is suppressed, but violence is only used as a last resort.'),
+            Cell(8, colored('Bureaucracy', 'cyan'), 'A government ruled by one, or several, administrative bodies. In medieval terms, these are usually the guildsmen and the guild masters. The existence of a bureaucracy implies the rule of law, but doesn’t necessarily imply good and justice.'),
+            Cell(9, colored('Cryptarchy', 'cyan'), 'A government rules, but the vast majority of citizens do not know who the ruler is. Although very strange to outsiders, this is a long-standing tradition; if it were not, this odd state of affairs would never have persisted.'),
+            Cell(11, colored('Confederacy or Confederation', 'cyan'), 'A cluster of settlements — each controlling land a day’s ride in every direction — which have a strong alliance with one another.'),
+            Cell(13, colored('Democracy', 'cyan'), 'A government ruled by one (or a ruling body), but the major decisions are decided by the vote of the people.'),
+            Cell(17, colored('Despotism', 'cyan'), 'A government ruled by one powerful person, and any resistance or rebellion is violently suppressed.'),
+            Cell(18, colored('Dyarchy', 'cyan'), ''),
+            Cell(0, colored('', 'cyan'), ''),
+            Cell(0, colored('', 'cyan'), ''),
+            Cell(0, colored('', 'cyan'), ''),
+        ]
 
     def price(self):
-        roll = r.randint(1, 100)
+        roll = rollsim(1, 100)
         result = None
         for i in self.pay_price:
             if(roll <= i.upper):
@@ -510,14 +545,25 @@ class Oracle():
         return result
 
     def plot_twist(self):
-        roll = r.randint(0, len(self.twist) - 1)
+        roll = rollsim(0, len(self.twist) - 1)
         return self.twist[roll]
 
     def get_goal(self):
-        roll = r.randint(1,100)
+        roll = rollsim(1,100)
         result = None
         for i in self.goals:
             if(roll <= i.upper):
                 result = i.description
                 break
         return result
+
+    def get_faction(self):
+        roll = rollsim(1, 100)
+        result = None
+        desc = None
+        for i in self.factions:
+            if(roll <= i.upper):
+                result = i.string1
+                desc = i.string2
+                break
+        return result, desc

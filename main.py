@@ -100,6 +100,10 @@ def help():
     print('Type {} to generate a settlement. (village/town/city)'.format(colored('"settlement"', 'cyan')))
     print('Generates a settlement.')
     print('')
+    print(colored('FACTION GENERATION', 'yellow'))
+    print('Type {} to generate a faction.'.format(colored('"faction"', 'cyan')))
+    print('Generates a basic type and description of a faction.')
+    print('')
     print(colored('GENESYS DICE ROLLER', 'yellow'))
     print('Type {} to open a new window for rolling Genesys dice.'.format(colored('"genesys"', 'cyan')))
     print('{} will increase and decrease Proficiency Dice.'.format(colored('Q and W', 'cyan')))
@@ -127,6 +131,7 @@ print('Fiere is an RPG Companion.')
 print('')
 print('Type {} to see a guide on the usage of commands.'.format(colored('"help"', 'cyan')))
 print('Many of the functions may require imagination and/or interpretation on your part.')
+print('Note to self: revamp the name generation on December.')
 print('')
 print(colored('SPECIAL THANKS TO:', 'yellow'))
 
@@ -135,6 +140,7 @@ The Universal NPC Emulator by Zach Best
 Ironsworn by Shawn Tomkin
 Genesys by Fantasy Flight Games
 Dungeons and Dragons 5th Edition DM's Guide by Wizards of the Coast
+Oldskull Game World Generator by Kent David Kelly
 Vincent Jarvina for bringing up prophecies
 ''')
 
@@ -290,6 +296,12 @@ while quit == 0:
     elif(player_input[0] == "goal"):
         try:
             print(oracle.get_goal())
+        except:
+            print(error())
+    elif(player_input[0] == "faction"):
+        try:
+            result, desc = oracle.get_faction()
+            print(result + ': ' + desc)
         except:
             print(error())
     elif(player_input[0] == "magic"):

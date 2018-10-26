@@ -1,7 +1,7 @@
 import random as r
 from termcolor import colored, cprint
 
-def roll(lower, upper):
+def rollsim(lower, upper):
     roll = 0
     for x in range(lower + upper):
         roll = r.randint(lower, upper)
