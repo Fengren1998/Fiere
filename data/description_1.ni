@@ -21,7 +21,7 @@
 21: Curiously
 22: Daintily
 23: Dangerously
-24: Defantly
+24: Defiantly
 25: Deliberately
 26: Delightfully
 27: Dimly

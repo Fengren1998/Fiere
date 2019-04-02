@@ -18,7 +18,7 @@ def markov_generate():
         key = file_string[i]
         if key not in chain:
             chain[key] = []
-            if(i+1 < len(file_string)):
+            if(i + 1 < len(file_string)):
                 chain[key].append(file_string[i+1])
             else:
                 chain[key].append('.')

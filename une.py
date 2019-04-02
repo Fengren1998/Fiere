@@ -35,7 +35,7 @@ class MName():
     """
     A name from a Markov chain
     """
-    def __init__(self, chainlen = 2):
+    def __init__(self, chainlen = 1):
         """
         Building the dictionary
         """
@@ -77,6 +77,7 @@ class UNE():
         self.npc_noun = []
         self.motivation_verb = []
         self.motivation_noun = []
+        self.markov = MName()
 
         with open("data/une_npcmod.ni", 'r') as file:
             content = file.readlines()
@@ -194,7 +195,7 @@ class UNE():
         npc_mod = self.npcmod()
         temp = str(npc_mod)
         first = list(temp.lower())
-        name = MName().New()
+        name = self.markov.New()
         if (first[5] == "a" or first[5] == "i" or first[5] == "u" or first[5] == "e" or first[5] == "o"):
             start = "An"
         else:

@@ -321,6 +321,8 @@ while quit == 0:
     else:
         try:
             rolls = d.roll(player_input[0])
+            #for x in range(int(rolls.random_element.max_value / 2)):
+            #    rolls = d.roll(player_input[0])
             total = 0
             for result in rolls:
                 total += result

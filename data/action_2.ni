@@ -28,7 +28,7 @@
 28: Pleasures
 29: Pain
 30: Possessions
-31: Benefts
+31: Benefits
 32: Plans
 33: Lies
 34: Expectations
